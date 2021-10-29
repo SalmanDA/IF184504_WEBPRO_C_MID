@@ -17,16 +17,28 @@
             </div>
         </header>
         <div class="container mt-n10">
+            @if ($message = Session::get('success'))
+                <div id="alert" class="alert alert-success alert-block mb-3">
+                    <button type="button" class="close" data-dismiss="alert">×</button>    
+                    {{ $message }}
+                </div>
+            @endif
+            @if ($message = Session::get('error'))
+                <div id="alert" class="alert alert-danger alert-block mb-3">
+                    <button type="button" class="close" data-dismiss="alert">×</button>    
+                    {{ $message }}
+                </div>
+            @endif
             <div class="card mb-4">
                 <div class="card-body">
-                    <form action="" id="upload-image" method="POST" enctype="multipart/form-data" autocomplete="off">
+                    <form action="{{ route('usr.updateprofile') }}" id="upload-image" method="POST" enctype="multipart/form-data" autocomplete="off">
                         @csrf
                         <div class="col-xxl-12 col-xl-12 mb-3">
                             <div class="text-center">
                                 <img class="img-account-profile mb-2" id="preview-image-before-upload" name="preview-image-before-upload" src="{{ asset('assets') }}/assets/img/user.png" alt="Preview Image">
                                 <div class="small font-italic text-muted mb-4">{{ __('JPG or PNG, no more than 2 MB') }}</div>
                                 <label class="btn btn-secondary lift" type="button" for="image">{{ __('Choose Photo') }}</label>
-                                <input id="image" name="image" type="file" accept="image/x-png,image/jpeg" style="display: none;" required>
+                                <input id="image" name="image" type="file" accept="image/x-png,image/jpeg" style="display: none;">
                                 @if(session()->has('btn_image'))<p class="text-danger">{{session('btn_image')}}</p>@endif
                             </div>
                         </div>
@@ -41,24 +53,32 @@
                             <div class="form-group col-md-6">
                                 <div class="form-group">
                                     <label class="small mb-1" for="name">{{ __('Fullname') }}</label>
-                                    <input class="form-control" id="name" name="name" type="text" placeholder="Enter your fullname" required/>
+                                    <input class="form-control" id="name" name="name" type="text" maxlength="255" value="{{ Auth::user()->name }}"/>
                                     @if(session()->has('name'))<p class="text-danger">{{session('name')}}</p>@endif
                                 </div>
                             </div>
                         </div>
+                        <h1>Create New Pasword</h1>
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <div class="form-group">
-                                    <label class="small mb-1" for="password">{{ __('Password') }}</label>
-                                    <input class="form-control" id="password" name="password" type="password" placeholder="Enter your password"/>
+                                    <label class="small mb-1" for="current_password">{{ __('Current Password') }}</label>
+                                    <input class="form-control" id="current_password" name="current_password" type="password" maxlength="16" placeholder="Enter current password"/>
+                                    @if(session()->has('current_password'))<p class="text-danger">{{session('current_password')}}</p>@endif
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <div class="form-group">
+                                    <label class="small mb-1" for="password">{{ __('New Password') }}</label>
+                                    <input class="form-control" id="password" name="password" type="password" maxlength="16" placeholder="Enter your password"/>
                                     @if(session()->has('password'))<p class="text-danger">{{session('password')}}</p>@endif
                                 </div>
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <div class="form-group">
                                     <label class="small mb-1" for="name">{{ __('Confirm Password') }}</label>
-                                    <input class="form-control" id="password" name="password_confirmation" type="password" placeholder="Confirm your password" required/>
-                                    @if(session()->has('name'))<p class="text-danger">{{session('name')}}</p>@endif
+                                    <input class="form-control" id="password" name="password_confirmation" type="password" maxlength="16" placeholder="Confirm your password"/>
+                                    @if(session()->has('password_confirmation'))<p class="text-danger">{{session('password_confirmation')}}</p>@endif
                                 </div>
                             </div>
                         </div>
@@ -68,7 +88,6 @@
                     </form>
                 </div>
             </div>
-        </div>
     </main>
 @endsection
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
