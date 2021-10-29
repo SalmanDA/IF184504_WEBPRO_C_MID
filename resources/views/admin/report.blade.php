@@ -1,5 +1,5 @@
-@extends('partials.admin_partials')
-@section('admin_content')
+@extends('partials.user_partials')
+@section('user_content')
     <main>
         <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
             <div class="container">
@@ -7,8 +7,8 @@
                     <div class="row align-items-center justify-content-between">
                         <div class="col-auto mt-4">
                             <h1 class="page-header-title">
-                                <div class="page-header-icon"><i data-feather="users"></i></div>
-                                {{ __('Employee List') }}
+                                <div class="page-header-icon"><i data-feather="bar-chart-2"></i></div>
+                                {{ __('Report') }}
                             </h1>
                             <div class="page-header-subtitle">{{ __('Employee Attendance App') }}</div>
                         </div>
@@ -19,32 +19,28 @@
         <div class="container mt-n10">
             <div class="card mb-4">
                 <div class="card-header">
-                    {{ __('Employee List') }}
+                    {{ __('Attendace Report') }}
                 </div>
                 <div class="card-body">
                     <div class="datatable">
                         <table class="table table-bordered table-hover" id="report_table" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>{{ __('No') }}</th>
-                                    <th>{{ __('Email') }}</th>
-                                    <th>{{ __('Fullname') }}</th>
-                                    <th>{{ __('Registered Date') }}</th>
-                                    <th>{{ __('Action') }}</th>
+                                    <th>{{ __('Date') }}</th>
+                                    <th>{{ __('Check In Time') }}</th>
+                                    <th>{{ __('Check Out Time') }}</th>
+                                    <th>{{ __('Work Time') }}</th>
+                                    <th>{{ __('Status') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($datauser as $user)
                                 <tr>
-                                    <td>{{ ++$i }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->created_at }}</td>
-                                    <td>
-                                    <button class="btn btn-danger btn-md">Delete</button>
-                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
-                                @endforeach
                             </tbody>
                         </table>
                     </div>
