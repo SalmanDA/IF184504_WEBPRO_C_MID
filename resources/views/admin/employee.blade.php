@@ -41,7 +41,7 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->created_at }}</td>
                                     <td>
-                                    <button class="btn btn-danger btn-md">Delete</button>
+                                    <button href="{{ route('adm.destroyemployee', $user->id) }}" class="btn btn-danger">Delete</button>
                                     </td>
                                 </tr>
                                 @endforeach

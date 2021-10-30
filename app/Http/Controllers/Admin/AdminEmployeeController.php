@@ -13,4 +13,11 @@ class AdminEmployeeController extends Controller {
 
         return view('admin.employee',compact('datauser'))->with('i',(request()->input('page',1)-1)*5);
     }
+
+    public function destroy($id) {
+        $datauser = User::find($id);
+        $datauser->delete();
+
+        return redirect()->route('adm.employee')->with(['success' => 'Success remove user!']);
+    }
 }
