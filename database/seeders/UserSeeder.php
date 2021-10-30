@@ -19,21 +19,22 @@ class UserSeeder extends Seeder
                 'name' => 'test1',
                 'email' => 'test1@test.com',
                 'password' => bcrypt('5ecret*!'),
-                'active' => 0,
                 'role_id' => 1
             ],
+        );
+        User::create(
             [
                 'name' => 'test2',
                 'email' => 'test2@test.com',
                 'password' => bcrypt('5ecret*@'),
-                'active' => 0,
                 'role_id' => 1
             ],
+        );
+        User::create(
             [
                 'name' => 'test3',
                 'email' => 'test3@test.com',
                 'password' => bcrypt('5ecret*#'),
-                'active' => 0,
                 'role_id' => 1
             ],
         );
