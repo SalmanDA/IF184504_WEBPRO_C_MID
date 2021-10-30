@@ -31,9 +31,8 @@
                                     <label style="color: #fff; font-weight: 600; font-size: 16px;" class="small mb-1" for="password">{{ __('Password') }}</label>
                                     <input class="form-control" name="password" id="password" type="password" placeholder="Enter password" />
                                 </div>
-                                <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                    <a style="color: #fff; font-weight: 600; font-size: 16px;" class="small" href="/forgotpassword">{{ __('Forgot Password?') }}</a>
-                                    <button style="color: #1E73BE; font-weight: 600; font-size: 16px;" class="btn btn-warning lift" type="submit">{{ __('Login') }}</button>
+                                <div class="form-group mt-4 mb-0">
+                                    <button style="color: #1E73BE; font-weight: 600; font-size: 16px;" type="submit" class="btn btn-warning btn-block lift">{{ __('Login') }}</button>
                                 </div>
                             </form>
                         </div>
