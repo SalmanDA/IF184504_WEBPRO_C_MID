@@ -11,4 +11,5 @@ Route::group(['middleware' => ["UserAdmin", 'prevent-back'], 'as' => 'adm.'], fu
     Route::get('/employee/destroy/{id}',[AdminEmployeeController::class,'destroy'])->name('destroyemployee');
     Route::get('/adminreport', [AdminReportController::class, 'index'])->name('adminreport');
     Route::get('/adminprofile', [AdminProfileController::class, 'index'])->name('adminprofile');
+    Route::post('adminprofile',[AdminProfileController::class,'updateadminprofile'])->name('updateadminprofile');
 });

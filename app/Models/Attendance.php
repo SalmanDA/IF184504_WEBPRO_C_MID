@@ -13,7 +13,6 @@ class Attendance extends Model
         "user_id",
         "check_in",
         "check_out",
-        "absent",
-        "working_hours_id"
+        "absent"
     ];
 }

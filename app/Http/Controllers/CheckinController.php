@@ -17,8 +17,7 @@ class CheckinController extends Controller
         'user_id' => $id,
         'check_in' => Carbon::now(),
         'check_out' => null,
-        'absent' => 1,
-        'working_hour_id' =>1
+        'absent' => 1
       ]);
       return redirect()->route('usr.dashboard');
     }
