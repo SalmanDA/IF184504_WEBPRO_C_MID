@@ -27,20 +27,26 @@
                             <thead>
                                 <tr>
                                     <th>{{ __('Date') }}</th>
+                                    <th>{{ __('Name') }}</th>
                                     <th>{{ __('Check In Time') }}</th>
                                     <th>{{ __('Check Out Time') }}</th>
                                     <th>{{ __('Work Time') }}</th>
-                                    <th>{{ __('Status') }}</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                @php
+                                $i = 0;    
+                                @endphp
+                                @foreach ($reports as $report)
+                                    <tr>
+                                        <td>{{ $report->created_at->format('d F Y') }}</td>
+                                        <td>{{ $report->name }}</td>
+                                        <td>{{ Carbon\Carbon::parse($report->check_in)->format('H:i:s') }}</td>
+                                        <td>{{ Carbon\Carbon::parse($report->check_out)->format('H:i:s') }}</td>
+                                        <td>{{ $durations[$i++] }}</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
